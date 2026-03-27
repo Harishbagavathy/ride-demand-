@@ -1,1 +1,46 @@
-
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a/templates/index.html b/templates/index.html
+new file mode 100644
+index 0000000000000000000000000000000000000000..f47a76e3303a618238a3e16a0849c801d0e412c1
+--- /dev/null
++++ b/templates/index.html
+@@ -0,0 +1,36 @@
++{% extends 'base.html' %}
++{% block title %}RideAI | Home{% endblock %}
++{% block content %}
++<section class="hero-section d-flex align-items-center">
++  <div class="container text-center">
++    <h1 class="display-4 fw-bold animate-up">Predict Ride Demand in Seconds</h1>
++    <p class="lead text-white-50 mb-4 animate-up delay-1">Use machine learning to estimate demand level, demand score, and surge multiplier.</p>
++    <a href="{{ url_for('predict_page') }}" class="btn btn-primary btn-lg px-4 py-2 animate-up delay-2">Start Prediction</a>
++  </div>
++</section>
++
++<section class="py-5">
++  <div class="container feature-cards">
++    <div class="row g-4">
++      <div class="col-md-4">
++        <div class="card bg-glass h-100 text-white p-4">
++          <h3 class="h5">Smart Forecasting</h3>
++          <p class="text-white-50 mb-0">Random forest models classify demand and estimate operational load.</p>
++        </div>
++      </div>
++      <div class="col-md-4">
++        <div class="card bg-glass h-100 text-white p-4">
++          <h3 class="h5">Live Dashboard</h3>
++          <p class="text-white-50 mb-0">Visualize demand by city, weather, and hour to plan dispatching better.</p>
++        </div>
++      </div>
++      <div class="col-md-4">
++        <div class="card bg-glass h-100 text-white p-4">
++          <h3 class="h5">Dataset Management</h3>
++          <p class="text-white-50 mb-0">Upload CSV files and inspect records directly in the web interface.</p>
++        </div>
++      </div>
++    </div>
++  </div>
++</section>
++{% endblock %}
+ 
+EOF
+)
